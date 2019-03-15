@@ -2,18 +2,18 @@ const Discord = require('discord.js');
 const {RichEmbed} = require('discord.js');
 const client = new Discord.Client();
 const fs = require('fs');
-const prefix = "!";
+const prefix = process.env.Prefix;
+// const prefix = "!";
 const userData = JSON.parse(fs.readFileSync('storage/userData.json', 'utf8'));
 
 client.on("ready", function(){
     console.log("Bot is Live!");
 });
 
-//type1_id is 386761072150970378
 
 client.on("message", (message) => {
     //Channel by ID 
-    if(message.channel.id === '386761072150970378'){
+    if(message.channel.id === 'channelID'){
         // make sure their username is there before writing to the file
         if(!userData[message.author.id]) userData[message.author.id] = {
             messagesSent: 0
@@ -37,5 +37,5 @@ if(message.content.includes(prefix + "Userstats")) {
     message.author.send('You have touched the Booty ' + userData[message.author.id].messagesSent + " times!")
 }
 })
-
+const token = process.env.token;
 client.login(token).catch(err => console.log(err));
