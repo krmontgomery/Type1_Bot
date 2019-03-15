@@ -3,7 +3,7 @@ const {RichEmbed} = require('discord.js');
 const client = new Discord.Client();
 const fs = require('fs');
 const prefix = process.env.Prefix;
-const channelID = process.env.ChannelID
+const channelID = process.env.ChannelID;
 // const prefix = "!";
 const userData = JSON.parse(fs.readFileSync('storage/userData.json', 'utf8'));
 
