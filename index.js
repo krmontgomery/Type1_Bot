@@ -3,6 +3,7 @@ const {RichEmbed} = require('discord.js');
 const client = new Discord.Client();
 const fs = require('fs');
 const prefix = process.env.Prefix;
+const channelID = process.env.ChannelID
 // const prefix = "!";
 const userData = JSON.parse(fs.readFileSync('storage/userData.json', 'utf8'));
 
@@ -13,7 +14,7 @@ client.on("ready", function(){
 
 client.on("message", (message) => {
     //Channel by ID 
-    if(message.channel.id === 'channelID'){
+    if(message.channel.id === channelID ){
         // make sure their username is there before writing to the file
         if(!userData[message.author.id]) userData[message.author.id] = {
             messagesSent: 0
